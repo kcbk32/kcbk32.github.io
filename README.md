@@ -1,2 +1,7 @@
-# kcbk32.github.io
-Data science portfolio covering Bayesian statistics, hierarchical models, time series, and computational methods for modern ML systems.
+This repository powers my GitHub Pages portfolio site:
+
+https://kcbk32.github.io
+
+The site showcases selected data science and Bayesian modeling projects,
+with a focus on uncertainty-aware analysis and computational methods.
+
