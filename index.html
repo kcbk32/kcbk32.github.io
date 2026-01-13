@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Amadej Kocbek — Data Science Portfolio</title>
-  <meta name="description" content="Data scientist focused on Bayesian statistics, time series, hierarchical models, and computational methods." />
+  <meta name="description" content="Data science portfolio featuring Bayesian statistics, hierarchical modeling, time series analysis, and computational inference." />
+
   <style>
     :root{
       --bg:#0b0c10;
@@ -61,7 +62,6 @@
     .card h3{margin:0 0 6px; font-size:17px}
     .meta{color:var(--muted); font-size:13px; margin-bottom:10px}
     .card p{margin:10px 0 12px; color:var(--fg)}
-    .card ul{margin:0 0 0 18px; color:var(--muted)}
     .imgcard{
       border:1px solid var(--line);
       background:rgba(255,255,255,0.02);
@@ -91,29 +91,29 @@
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
+
     <header>
       <div>
         <h1>Amadej Kocbek</h1>
         <div class="subtitle">
-          I enjoy building <b>statistically principled</b> models for real-world data — especially
-          <b>Bayesian inference</b>, <b>hierarchical modeling</b>, <b>time series</b>, and
-          computational methods that make uncertainty explicit.
+          I enjoy building <b>statistically principled</b> models for real-world data —
+          especially <b>Bayesian inference</b>, <b>hierarchical modeling</b>,
+          <b>time series analysis</b>, and computational methods that make uncertainty explicit.
         </div>
         <div class="pillrow">
           <span class="pill">Bayesian Statistics</span>
-          <span class="pill">Stan (HMC/NUTS)</span>
-          <span class="pill">Time Series</span>
           <span class="pill">Hierarchical Models</span>
+          <span class="pill">Time Series</span>
+          <span class="pill">Stan (HMC/NUTS)</span>
           <span class="pill">R</span>
           <span class="pill">Python</span>
-          <span class="pill">Model Comparison</span>
         </div>
       </div>
       <div class="links">
         <a class="btn" href="https://github.com/kcbk32" target="_blank" rel="noopener">GitHub</a>
-        <!-- Add LinkedIn/CV later -->
       </div>
     </header>
 
@@ -121,15 +121,18 @@
       <h2>Selected projects</h2>
 
       <div class="grid">
+
         <div class="card">
           <h3>📉 Bayesian Time-Series Analysis of NO₂</h3>
-          <div class="meta">Stan · Bayesian time series · PSIS-LOO</div>
+          <div class="meta">Bayesian time series · Stan · PSIS-LOO model comparison</div>
           <p>
             Long-term NO₂ concentrations (1997–2025) modeled with temporal dependence.
-            Models are compared using predictive cross-validation to estimate trends with uncertainty.
+            Competing models are evaluated using predictive cross-validation to quantify
+            trend uncertainty and avoid overfitting.
           </p>
           <div class="links">
             <a class="btn" href="https://github.com/kcbk32/no2-bayesian-timeseries" target="_blank" rel="noopener">Repository</a>
+            <a class="btn" href="assets/pdfs/no2_report.pdf" target="_blank" rel="noopener">Report (PDF)</a>
           </div>
         </div>
 
@@ -137,42 +140,53 @@
           <h3>🌍 Hierarchical Bayesian Analysis of Global Happiness</h3>
           <div class="meta">Hierarchical GLM · partial pooling · uncertainty-aware ranking</div>
           <p>
-            A single hierarchical model estimating global trends, continent-level heterogeneity,
-            and probabilistic country rankings using wealth and health covariates.
+            A single hierarchical Bayesian model estimating global trends, continent-level
+            heterogeneity, and probabilistic country rankings using economic and health covariates.
           </p>
           <div class="links">
             <a class="btn" href="https://github.com/kcbk32/global-happiness" target="_blank" rel="noopener">Repository</a>
+            <a class="btn" href="assets/pdfs/global_happiness_report.pdf" target="_blank" rel="noopener">Report (PDF)</a>
           </div>
         </div>
+
       </div>
     </div>
 
     <div class="section">
-      <h2>Visuals</h2>
+      <h2>Featured figure</h2>
+      <div class="imgcard">
+        <img src="assets/img/global_posteriors.png" alt="Posterior distributions of global parameters">
+        <div class="caption">
+          Global happiness model: posterior distributions of global parameters.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>In progress</h2>
+
       <div class="grid">
-
-        <div class="imgcard">
-          <img src="assets/img/no2.png" alt="NO2 project figure">
-          <div class="caption">NO₂: Bayesian trend estimation with time-series structure (example figure).</div>
+        <div class="card">
+          <h3>🤖 Transformer ablation study</h3>
+          <div class="meta">PyTorch · Transformers · experimental ML</div>
+          <p>
+            A minimal decoder-only Transformer built from scratch with systematic ablations
+            (attention, residuals, normalization, positional encodings) to understand what matters and why.
+          </p>
+          <p class="meta">
+            Planned: a small architecture or results diagram.
+          </p>
         </div>
 
-        <div class="imgcard">
-          <img src="assets/img/happiness.png" alt="Global happiness project figure">
-          <div class="caption">Happiness: continent-level effects and uncertainty (example figure).</div>
+        <div class="card">
+          <h3>🧠 Retrieval-Augmented Generation (RAG) system</h3>
+          <div class="meta">Embeddings · retrieval · evaluation · production-oriented pipeline</div>
+          <p>
+            A practical RAG pipeline focused on reliable retrieval, clear evaluation,
+            and clean engineering: document ingestion, chunking, embedding,
+            retrieval, and response generation with measurable quality.
+          </p>
         </div>
-
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>What I’m building next</h2>
-      <div class="card">
-        <h3>🤖 Transformer ablation study</h3>
-        <div class="meta">PyTorch · Transformers · experimental ML</div>
-        <p>
-          A minimal decoder-only Transformer built from scratch with systematic ablations
-          (attention, residuals, normalization, positional encodings) to understand what matters and why.
-        </p>
       </div>
     </div>
 
@@ -180,6 +194,7 @@
       <div>© <span id="y"></span> Amadej Kocbek</div>
       <div>Built with GitHub Pages</div>
     </footer>
+
   </div>
 
   <script>
