@@ -153,11 +153,29 @@
     </div>
 
     <div class="section">
-      <h2>Featured figure</h2>
+      <h2>Featured animation</h2>
+
       <div class="imgcard">
-        <img src="assets/img/global_posteriors.png" alt="Posterior distributions of global parameters">
+        <video
+          src="assets/animations/hmc_approach_final_density.mp4"
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          class="featured-video"
+        >
+          Your browser does not support the video tag.
+        </video>
+
         <div class="caption">
-          Global happiness model: posterior distributions of global parameters.
+          <strong>Posterior convergence under HMC sampling.</strong>
+          The animation shows how a kernel density estimate of the posterior for the global GDP effect
+          parameter evolves as sampling progresses. The dark curve is the running density computed from
+          the first <em>k</em> post-warmup HMC draws, where <em>k</em> increases monotonically over time.
+          The light curve is the final posterior density computed from all available post-warmup draws
+          and serves as a reference. The moving point indicates the current sample value at iteration
+          <em>k</em>. As <em>k</em> grows, the running estimate fluctuates less and concentrates around the
+          final posterior, illustrating Monte Carlo convergence.
         </div>
       </div>
     </div>
