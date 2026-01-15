@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Amadej Kristjan Kocbek — Data Science Portfolio</title>
-  <meta name="description" content="Data science portfolio featuring Bayesian statistics, hierarchical modeling, time series analysis, and computational inference." />
+  <meta name="description" content="Data science portfolio featuring Bayesian statistics, hierarchical modeling, time series analysis, and ML research + production work." />
 
   <style>
     :root{
@@ -78,6 +78,69 @@
       display:block;
     }
     .caption{margin-top:10px; color:var(--muted); font-size:13px}
+
+    /* --- Carousel --- */
+    .carousel{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .carousel-viewport{
+      flex:1;
+      overflow:hidden;
+      border-radius:12px;
+    }
+    .carousel-track{
+      display:flex;
+      transition:transform 260ms ease;
+      will-change:transform;
+    }
+    .slide{
+      min-width:100%;
+      padding:6px 0;
+    }
+    .slide video{
+      width:100%;
+      height:auto;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:#0b0c10;
+      display:block;
+    }
+    .navbtn{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.03);
+      color:var(--fg);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      user-select:none;
+    }
+    .navbtn:hover{border-color:#3a4160; background:rgba(255,255,255,0.05)}
+    .dots{
+      margin-top:10px;
+      display:flex;
+      gap:8px;
+      justify-content:center;
+    }
+    .dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.06);
+      cursor:pointer;
+    }
+    .dot.active{
+      background:var(--accent);
+      border-color:rgba(255,255,255,0.12);
+    }
+
     footer{
       margin-top:38px;
       padding-top:18px;
@@ -99,15 +162,18 @@
       <div>
         <h1>Amadej Kristjan Kocbek</h1>
         <div class="subtitle">
-          I enjoy building <b>statistically principled</b> models for real-world data —
-          especially <b>Bayesian inference</b>, <b>hierarchical modeling</b>,
-          <b>time series analysis</b>, and computational methods that make uncertainty explicit.
+          I build <b>statistically principled</b> models for real-world data and enjoy work that spans
+          <b>Bayesian inference</b> (uncertainty-aware decision-making) and <b>machine learning</b>—from
+          research-style experimentation (e.g., Transformer ablations) to <b>production-oriented</b>
+          pipelines (evaluation, reliability, and clean engineering).
         </div>
         <div class="pillrow">
           <span class="pill">Bayesian Statistics</span>
           <span class="pill">Hierarchical Models</span>
           <span class="pill">Time Series</span>
           <span class="pill">Stan (HMC/NUTS)</span>
+          <span class="pill">ML Research</span>
+          <span class="pill">ML Pipelines</span>
           <span class="pill">R</span>
           <span class="pill">Python</span>
         </div>
@@ -149,34 +215,86 @@
           </div>
         </div>
 
+         <div class="card">
+          <h3>Transformer ablation study</h3>
+          <div class="meta">PyTorch · Transformers · experimental ML</div>
+          <p>
+            A minimal decoder-only Transformer built from scratch with systematic ablations
+            (attention, residuals, normalization, positional encodings) to understand what matters and why.
+          </p>
+          <div class="links">
+            <a class="btn" href="https://github.com/kcbk32/transformer-ablate" target="_blank" rel="noopener">Repository</a>
+            <a class="btn" href="assets/pdf/ablation_study_transformers.pdf" target="_blank" rel="noopener">Report (PDF)</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="section">
-      <h2>Featured animation</h2>
+      <h2>Featured animations</h2>
 
       <div class="imgcard">
-        <video
-          src="assets/animations/hmc_approach_final_density.mp4"
-          controls
-          muted
-          playsinline
-          preload="metadata"
-          style="width: 50%; height: auto;"
-          class="featured-video"
-        >
-          Your browser does not support the video tag.
-        </video>
+        <div class="carousel" id="animCarousel">
+          <button class="navbtn" type="button" aria-label="Previous" id="prevBtn">‹</button>
 
-        <div class="caption">
-          <strong>Posterior convergence under HMC sampling.</strong>
-          The animation shows how a kernel density estimate of the posterior for the global GDP effect
-          parameter evolves as sampling progresses. The dark curve is the running density computed from
-          the first <em>k</em> post-warmup HMC draws, where <em>k</em> increases monotonically over time.
-          The light curve is the final posterior density computed from all available post-warmup draws
-          and serves as a reference. The moving point indicates the current sample value at iteration
-          <em>k</em>. As <em>k</em> grows, the running estimate fluctuates less and concentrates around the
-          final posterior, illustrating Monte Carlo convergence.
+          <div class="carousel-viewport" aria-live="polite">
+            <div class="carousel-track" id="carouselTrack">
+
+              <!-- Slide 1 -->
+              <div class="slide" data-caption-id="cap1">
+                <video
+                  src="assets/animations/hmc_approach_final_density.mp4"
+                  controls
+                  muted
+                  playsinline
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="slide" data-caption-id="cap2">
+                <video
+                  src="assets/animations/compare_base_vs_no_res_no_ln.mp4"
+                  controls
+                  muted
+                  playsinline
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+            </div>
+          </div>
+
+          <button class="navbtn" type="button" aria-label="Next" id="nextBtn">›</button>
+        </div>
+
+        <div class="dots" id="carouselDots" aria-label="Carousel navigation"></div>
+
+        <div class="caption" id="carouselCaption">
+          <span id="cap1">
+            <strong>Posterior convergence under HMC sampling.</strong>
+            The animation shows how a kernel density estimate of the posterior for the global GDP effect
+            parameter evolves as sampling progresses. The dark curve is the running density computed from
+            the first <em>k</em> post-warmup HMC draws, where <em>k</em> increases monotonically over time.
+            The light curve is the final posterior density computed from all available post-warmup draws
+            and serves as a reference. The moving point indicates the current sample value at iteration
+            <em>k</em>. As <em>k</em> grows, the running estimate fluctuates less and concentrates around the
+            final posterior, illustrating Monte Carlo convergence.
+          </span>
+
+          <span id="cap2" style="display:none">
+            <strong>Transformer ablation: removing residual connections and layer normalization.</strong>
+            In this setting, perplexity largely correlates with qualitative performance; nevertheless,
+            prompt-conditioned generation with a fixed prefix (<code>ROMEO:</code>) provides an interpretable
+            view of how training progress manifests in syntactic and stylistic structure. Removing
+            <b>layer normalization</b> and <b>residual connections</b> markedly impedes optimization and
+            degrades generated text, even when perplexity improves slowly or appears noisy early on.
+          </span>
         </div>
       </div>
     </div>
@@ -185,17 +303,6 @@
       <h2>In progress</h2>
 
       <div class="grid">
-        <div class="card">
-          <h3>Transformer ablation study</h3>
-          <div class="meta">PyTorch · Transformers · experimental ML</div>
-          <p>
-            A minimal decoder-only Transformer built from scratch with systematic ablations
-            (attention, residuals, normalization, positional encodings) to understand what matters and why.
-          </p>
-          <p class="meta">
-            Planned: a small architecture or results diagram.
-          </p>
-        </div>
 
         <div class="card">
           <h3>Retrieval-Augmented Generation (RAG) system</h3>
@@ -210,7 +317,7 @@
     </div>
 
     <footer>
-      <div>© <span id="y"></span> Amadej Kocbek</div>
+      <div>© <span id="y"></span> Amadej Kristjan Kocbek</div>
       <div>Built with GitHub Pages</div>
     </footer>
 
@@ -218,7 +325,64 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    (function() {
+      const track = document.getElementById("carouselTrack");
+      const slides = Array.from(track.querySelectorAll(".slide"));
+      const dotsWrap = document.getElementById("carouselDots");
+      const captionBox = document.getElementById("carouselCaption");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      let idx = 0;
+
+      function setCaption(i){
+        const capId = slides[i].getAttribute("data-caption-id");
+        Array.from(captionBox.children).forEach(el => {
+          el.style.display = (el.id === capId) ? "" : "none";
+        });
+      }
+
+      function renderDots(){
+        dotsWrap.innerHTML = "";
+        slides.forEach((_, i) => {
+          const d = document.createElement("button");
+          d.className = "dot" + (i === idx ? " active" : "");
+          d.type = "button";
+          d.setAttribute("aria-label", "Go to slide " + (i + 1));
+          d.addEventListener("click", () => goTo(i));
+          dotsWrap.appendChild(d);
+        });
+      }
+
+      function pauseAllVideos(){
+        slides.forEach(s => {
+          const v = s.querySelector("video");
+          if (v && !v.paused) v.pause();
+        });
+      }
+
+      function goTo(i){
+        idx = (i + slides.length) % slides.length;
+        pauseAllVideos();
+        track.style.transform = "translateX(" + (-idx * 100) + "%)";
+        setCaption(idx);
+        renderDots();
+      }
+
+      prevBtn.addEventListener("click", () => goTo(idx - 1));
+      nextBtn.addEventListener("click", () => goTo(idx + 1));
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(idx - 1);
+        if (e.key === "ArrowRight") goTo(idx + 1);
+      });
+
+      // init
+      setCaption(0);
+      renderDots();
+      goTo(0);
+    })();
   </script>
 </body>
 </html>
-
